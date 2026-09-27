@@ -1,0 +1,17 @@
+[Unit]
+Description=Kevacoin pool: charts data collector (hash rate, difficulty, miners, workers on the home page)
+After=keva-pool-redis.service keva-pool-api.service
+Requires=keva-pool-redis.service
+[Service]
+Type=simple
+User=kevapool
+WorkingDirectory=/opt/keva-nodejs-pool
+ExecStart=/usr/bin/node /opt/keva-nodejs-pool/init.js -module=chartsDataCollector
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

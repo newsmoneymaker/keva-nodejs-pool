@@ -1,0 +1,17 @@
+[Unit]
+Description=Kevacoin pool: payment processor (sendmany from the pool wallet; emergency brake: deployment/pause-payments.sh)
+After=keva-pool-redis.service keva-node.service keva-wallet-rpc.service
+Requires=keva-pool-redis.service
+[Service]
+Type=simple
+User=kevapool
+WorkingDirectory=/opt/keva-nodejs-pool
+ExecStart=/usr/bin/node /opt/keva-nodejs-pool/init.js -module=payments
+Restart=always
+RestartSec=15
+TimeoutStopSec=30
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

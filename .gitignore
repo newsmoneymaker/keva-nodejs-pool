@@ -1,0 +1,10 @@
+node_modules
+logs/
+config.json
+STOP_PAYMENTS
+*.log
+hasher/rxhash
+hasher/cnhash_helper
+hasher/*.a
+hasher/*.o
+hasher/crypto-src/*.o
